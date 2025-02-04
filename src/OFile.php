@@ -112,11 +112,11 @@ class OFile {
 	 *
 	 * @param string $zip_route Path of the new zip file
 	 *
-	 * @param string $basename Base path of the folder to be added
+	 * @param string | null $basename Base path of the folder to be added
 	 *
 	 * @return void
 	 */
-	public function zip($route, $zip_route, $basename=null) {
+	public function zip(string $route, string $zip_route, string | null $basename = null) {
 		if (file_exists($zip_route)) {
 			unlink($zip_route);
 		}
