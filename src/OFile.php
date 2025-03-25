@@ -126,4 +126,41 @@ class OFile {
 		$this->addDir($route, is_null($basename) ? basename($route) : $basename);
 		$this->zip_file->close();
 	}
+
+	/**
+	 * Get OFWs folder structure list
+	 *
+	 * @return array List of OFW folders
+	 */
+	public static function getOFWFolders(): array {
+		return [
+			"src",
+			"src/Component",
+			"src/Config",
+			"src/Filter",
+			"src/DTO",
+			"src/Layout",
+			"src/Model",
+			"src/Module",
+			"src/Routes",
+			"src/Service",
+			"src/Task",
+			"public",
+			"public/css",
+			"public/js"
+		];
+	}
+
+	public static function getOFWFiles(): array {
+		$base_repo_url = "https://raw.githubusercontent.com/osumionline/new/refs/heads/main/";
+		return [
+			['where' => '.gitignore',                            'url' => $base_repo_url.".gitignore"],
+			['where' => 'of',                                    'url' => $base_repo_url."of"],
+			['where' => 'src/Layout/DefaultLayoutComponent.php', 'url' => $base_repo_url."src/Layout/DefaultLayoutComponent.php"],
+			['where' => 'src/Layout/DefaultLayoutTemplate.html', 'url' => $base_repo_url."src/Layout/DefaultLayoutTemplate.html"],
+			['where' => 'public/.htaccess',                      'url' => $base_repo_url."public/.htaccess"],
+			['where' => 'public/favicon.ico',                    'url' => $base_repo_url."public/favicon.ico"],
+			['where' => 'public/index.php',                      'url' => $base_repo_url."public/index.php"]
+		];
+	}
 }
